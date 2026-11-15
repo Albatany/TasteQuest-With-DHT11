@@ -1,0 +1,37 @@
+{
+  "name": "tastequest",
+  "private": true,
+  "type": "module",
+  "description": "TasteQuest — PLAY. TASTE. RATE. HMIF UNJA × FST Market Day 2026. © Muhammad Aziz Syah Dani 2026",
+  "workspaces": [
+    "packages/shared",
+    "apps/server",
+    "apps/web"
+  ],
+  "scripts": {
+    "setup": "node scripts/setup-env.mjs",
+    "dev": "npm run dev -w @tastequest/server",
+    "build": "npm run build -w @tastequest/web",
+    "start": "npm run start -w @tastequest/server",
+    "serve": "npm run build && npm start",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "vitest run",
+    "firmware:sim": "pio run -d firmware -e sim",
+    "firmware:hardware": "pio run -d firmware -e hardware",
+    "test:e2e": "playwright test",
+    "test:firmware": "g++ -std=gnu++17 -w -DTQ_HARDWARE_MODE -Ifirmware-tests/stub -Ifirmware/include firmware/src/pins.cpp firmware/src/input.cpp firmware-tests/native_test.cpp -o firmware-tests/native_test.bin && ./firmware-tests/native_test.bin"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^24",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  },
+  "allowScripts": {
+    "better-sqlite3@13.2.0": true,
+    "esbuild@0.28.2": true
+  }
+}
