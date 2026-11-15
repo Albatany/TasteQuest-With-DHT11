@@ -1,6 +1,8 @@
-# TasteQuest — PLAY. TASTE. RATE.
+# TasteQuest: PLAY. TASTE. RATE.
 
-**HMIF UNJA × FST Market Day 2026** · Dikembangkan oleh **Muhammad Aziz Syah Dani** · © Muhammad Aziz Syah Dani 2026
+**HMIF UNJA × FST Market Day 2026** 
+
+Dikembangkan oleh **Muhammad Aziz Syah Dani**
 
 TasteQuest adalah proyek pameran IoT Himpunan Mahasiswa Informatika Universitas Jambi untuk FST Market Day, acara yang menggabungkan stan makanan mahasiswa dan pameran proyek akademik. Satu perangkat ESP8266 menjalankan dua pengalaman:
 
@@ -130,5 +132,5 @@ Setelah `npm install`, `npm run build`, dan `pio pkg install -d firmware`, semua
 
 ---
 
-TasteQuest — HMIF UNJA
+TasteQuest & HMIF UNJA
 © Muhammad Aziz Syah Dani 2026
