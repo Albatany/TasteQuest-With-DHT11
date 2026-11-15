@@ -1,0 +1,122 @@
+@import 'tailwindcss';
+@import '@fontsource/pixelify-sans/400.css';
+@import '@fontsource/pixelify-sans/600.css';
+@import '@fontsource/press-start-2p/400.css';
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+
+/*
+ * TasteQuest design tokens — the ONLY place colors and fonts are defined.
+ * ink / gold / paper values were read from the live hmifunja.my.id stylesheet
+ * (see docs/BRAND_ANALYSIS.md). ok / warn / bad are TasteQuest additions for status meaning.
+ */
+@theme {
+  --color-ink-950: #140d08;
+  --color-ink-900: #22150d;
+  --color-ink-800: #342116;
+  --color-ink-700: #4a2f20;
+  --color-ink-600: #64402b;
+  --color-ink-500: #8b5e3c;
+  --color-ink-400: #a97752;
+  --color-ink-300: #c69a74;
+  --color-ink-200: #e2c6a8;
+  --color-ink-100: #f3e7d7;
+  --color-ink-50: #faf7f2;
+  --color-gold-400: #dcc4a8;
+  --color-gold-500: #d4a657;
+  --color-gold-600: #b4863c;
+  --color-gold-700: #8c6830;
+  --color-paper: #eef1f5;
+
+  --color-ok: #2fbfa3;
+  --color-warn: #e8b04b;
+  --color-bad: #e5654f;
+
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: 'Pixelify Sans', ui-monospace, monospace;
+  --font-arcade: 'Press Start 2P', ui-monospace, monospace;
+
+  --animate-rise: rise 280ms steps(6) both;
+  --animate-blink: blink 1s steps(1) infinite;
+  --animate-pop: pop 520ms cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes boot-fill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes pixel-fall {
+  from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  to { transform: translateY(110vh) rotate(360deg); opacity: 0.9; }
+}
+
+html {
+  color-scheme: dark;
+  background: var(--color-ink-950);
+}
+body {
+  min-height: 100dvh;
+  background-color: var(--color-ink-950);
+  /* static 16px pixel grid, no runtime cost */
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.022) 1px, transparent 1px);
+  background-size: 16px 16px;
+  color: var(--color-ink-50);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-gold-500);
+  outline-offset: 3px;
+}
+
+/* Notched 8-bit frame: four offset shadows leave the corner pixels empty. */
+@utility pixel-frame {
+  --frame: var(--color-ink-700);
+  box-shadow:
+    0 -4px 0 0 var(--frame),
+    0 4px 0 0 var(--frame),
+    -4px 0 0 0 var(--frame),
+    4px 0 0 0 var(--frame),
+    0 10px 0 0 rgb(0 0 0 / 0.35);
+}
+@utility pixel-frame-sm {
+  --frame: var(--color-ink-700);
+  box-shadow:
+    0 -2px 0 0 var(--frame),
+    0 2px 0 0 var(--frame),
+    -2px 0 0 0 var(--frame),
+    2px 0 0 0 var(--frame);
+}
+
+@utility scanlines {
+  background-image: repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.04) 0 1px, transparent 1px 3px);
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
